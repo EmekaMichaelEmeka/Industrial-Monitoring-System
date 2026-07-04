@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wellhead Monitor | WH-001</title>
+  <script src="https://cdn.jsdelivr.net/npm/mqtt@5.10.3/dist/mqtt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div>
+        <p class="eyebrow">Industrial Monitoring System</p>
+        <h1>North Ridge Wellhead <span id="site-id">WH-001</span></h1>
+      </div>
+      <div class="header-meta">
+        <div id="connection-status" class="badge badge-offline">Disconnected</div>
+        <div class="timestamp">Last update: <span id="last-update">—</span></div>
+      </div>
+    </header>
+
+    <section class="status-banner" id="status-banner">
+      <span class="status-dot"></span>
+      <span id="overall-status-text">Waiting for telemetry...</span>
+    </section>
+
+    <main class="grid">
+      <section class="panel sensor-grid" id="sensor-cards"></section>
+
+      <section class="panel chart-panel">
+        <div class="panel-header">
+          <h2>Live Trends</h2>
+          <p>Last 60 samples</p>
+        </div>
+        <canvas id="trend-chart"></canvas>
+      </section>
+
+      <section class="panel alert-panel">
+        <div class="panel-header">
+          <h2>Threshold Alerts</h2>
+          <p>MQTT topic: wellhead/WH-001/alerts</p>
+        </div>
+        <ul id="alert-feed" class="alert-feed"></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

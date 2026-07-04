@@ -1,0 +1,53 @@
+mqtt:
+  host: localhost
+  port: 1883
+  client_id: wellhead-simulator-py
+  qos: 1
+
+site:
+  id: WH-001
+  name: North Ridge Wellhead
+  type: wellhead
+
+simulation:
+  interval_seconds: 1.0
+  anomaly_probability: 0.02
+
+sensors:
+  pressure:
+    unit: psi
+    baseline: 875.0
+    noise: 3.5
+    drift_per_hour: 2.0
+    thresholds:
+      warning: 920.0
+      critical: 950.0
+
+  temperature:
+    unit: "°C"
+    baseline: 68.0
+    noise: 0.4
+    diurnal_amplitude: 4.0
+    thresholds:
+      warning: 82.0
+      critical: 88.0
+
+  flow_rate:
+    unit: bbl/day
+    baseline: 1180.0
+    noise: 15.0
+    pump_cycle_period: 45.0
+    pump_cycle_amplitude: 80.0
+    thresholds:
+      low_warning: 900.0
+      low_critical: 750.0
+      high_warning: 1450.0
+      high_critical: 1600.0
+
+  vibration:
+    unit: mm/s
+    baseline: 3.2
+    noise: 0.15
+    thresholds:
+      warning: 7.5
+      critical: 10.0
